@@ -1,0 +1,14 @@
+- name: "Uninstall non-required packages"
+  apt:
+    name: "{{ packages }}"
+    force_apt_get: yes
+    state: absent 
+    purge: yes
+  vars:
+    packages:
+      - postfix
+
+- name: "Clean apt cache"
+  apt:
+    autoremove: yes
+    autoclean: yes
